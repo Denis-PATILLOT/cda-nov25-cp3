@@ -10,7 +10,7 @@ Tu partiras d'un squelette NextJS presque vide; toute la partie backend est déj
 - Va dans le dossier frontend, installe les dépendances et mets en place les variables d'environnement.
 - Va à la racine du repository et fais un ```docker compose up```
 - Va dans le dossier backend et fais un  ```npm run resetDB``` pour avoir des données sur lesquelles travailler.
-- Va explorer l'API graphQL (par défault sur [http://localhost:4000](http://localhost:4000)) pour voir comment l'exploiter sur le front.
+- Va explorer l'API graphQL (par défaut sur [http://localhost:4000](http://localhost:4000)) pour voir comment l'exploiter sur le front.
 
 ## Fonctionnalités à intégrer sur le front
 
@@ -21,9 +21,10 @@ Tu partiras d'un squelette NextJS presque vide; toute la partie backend est déj
 - On peut rechercher les articles par titre
 
 Tu peux regarder le dossier "screenshots" à la racine pour avoir une idée de ce qui est attendu pour chaque page.
-Ces captures d'écran sont présentes à titre informatifs uniquement, tu peux tout à fait chosir une autre façon de présenter les éléments sur tes pages.
+Ces captures d'écran sont présentes à titre informatif uniquement, tu peux tout à fait choisir une autre façon de présenter les éléments sur tes pages.
 
-Quelques conseils :
+## Quelques conseils
+
 - développe en mobile-first
-- priorise les fonctionnalités plutot que le style
+- priorise les fonctionnalités plutôt que le style
 - utilise des outils comme [WAVE](https://wave.webaim.org/) pour vérifier l'accessibilité de tes pages.
