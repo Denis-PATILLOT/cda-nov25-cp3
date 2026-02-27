@@ -12,10 +12,11 @@ export default function ArticleForm() {
 
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = document.querySelector("form")!;
+    const formData = new FormData(form);
     console.log("formulaire soumis");
     try {
-        const response = await createArticle({ variables: { data } });
+        const response = await createArticle({ variables: { data: data as unknown as CreateArticleInput } });
         router.push(`/articles/${response.data?.createArticle.id}`);
     } catch (err) {
         console.error(err);
@@ -24,7 +25,7 @@ export default function ArticleForm() {
 
   return (
     <div className="flex flex-col md:flex-row md:flex-wrap text-white">
-        <form onSubmit={() =>handleSubmit} className="pb-12">
+        <form onSubmit={handleSubmit} className="pb-12">
             {error && <p>{error.message}</p>}
             <label htmlFor="title" className="block mb-1">Title*</label>
             <input type="text" title="Title" id="title" name="title" placeholder="enter article title..." className="bg-gray-600 border border-gray-200 rounded-lg p-2 inline-block mb-5" />
