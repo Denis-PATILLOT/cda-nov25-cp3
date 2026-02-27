@@ -1,0 +1,7 @@
+query Posts {
+  articles {
+    id
+    mainPictureUrl
+    title
+  }
+}

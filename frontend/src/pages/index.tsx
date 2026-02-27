@@ -1,7 +1,10 @@
-
+import Layout from "@/components/Layout";
+import RecentPosts from "@/components/RecentPosts";
 
 export default function Home() {
   return (
-    <div>Checkpoint 3</div>
+    <Layout pageTitle="Accueil">
+      <RecentPosts />
+    </Layout>
   );
 }
