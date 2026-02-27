@@ -122,6 +122,13 @@ export type RecentPostsQueryVariables = Exact<{
 
 export type RecentPostsQuery = { __typename?: 'Query', articles: Array<{ __typename?: 'Article', id: number, mainPictureUrl: string, title: string }> };
 
+export type SearchArticlesQueryVariables = Exact<{
+  title?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type SearchArticlesQuery = { __typename?: 'Query', articles: Array<{ __typename?: 'Article', id: number, mainPictureUrl: string, title: string }> };
+
 
 export const CategoriesDocument = gql`
     query Categories {
@@ -359,3 +366,45 @@ export type RecentPostsQueryHookResult = ReturnType<typeof useRecentPostsQuery>;
 export type RecentPostsLazyQueryHookResult = ReturnType<typeof useRecentPostsLazyQuery>;
 export type RecentPostsSuspenseQueryHookResult = ReturnType<typeof useRecentPostsSuspenseQuery>;
 export type RecentPostsQueryResult = ApolloReactCommon.QueryResult<RecentPostsQuery, RecentPostsQueryVariables>;
+export const SearchArticlesDocument = gql`
+    query SearchArticles($title: String) {
+  articles(title: $title) {
+    id
+    mainPictureUrl
+    title
+  }
+}
+    `;
+
+/**
+ * __useSearchArticlesQuery__
+ *
+ * To run a query within a React component, call `useSearchArticlesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchArticlesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchArticlesQuery({
+ *   variables: {
+ *      title: // value for 'title'
+ *   },
+ * });
+ */
+export function useSearchArticlesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchArticlesQuery, SearchArticlesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<SearchArticlesQuery, SearchArticlesQueryVariables>(SearchArticlesDocument, options);
+      }
+export function useSearchArticlesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchArticlesQuery, SearchArticlesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<SearchArticlesQuery, SearchArticlesQueryVariables>(SearchArticlesDocument, options);
+        }
+export function useSearchArticlesSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<SearchArticlesQuery, SearchArticlesQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<SearchArticlesQuery, SearchArticlesQueryVariables>(SearchArticlesDocument, options);
+        }
+export type SearchArticlesQueryHookResult = ReturnType<typeof useSearchArticlesQuery>;
+export type SearchArticlesLazyQueryHookResult = ReturnType<typeof useSearchArticlesLazyQuery>;
+export type SearchArticlesSuspenseQueryHookResult = ReturnType<typeof useSearchArticlesSuspenseQuery>;
+export type SearchArticlesQueryResult = ApolloReactCommon.QueryResult<SearchArticlesQuery, SearchArticlesQueryVariables>;
