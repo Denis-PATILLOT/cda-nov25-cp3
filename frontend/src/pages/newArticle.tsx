@@ -8,7 +8,7 @@ export default function NewAd() {
 
   return (
     <Layout pageTitle="New article">
-      <div className="p-4 max-w-[600px] mx-auto">
+      <div className="p-4 max-w-[600px] mx-auto md:max-w-[1000px]" >
         <h2 className="text-xl font-bold my-6 text-center text-white">Create a new article</h2>
         <ArticleForm /> 
       </div>

@@ -16,7 +16,7 @@ export default function RecentPosts() {
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-6 text-white">Latest Posts</h2>
-      <div className="flex flex-col items-center md:flex-row md:flex-wrap w-full">
+      <div className="flex flex-col items-center md:flex-row md:flex-wrap w-full gap-y-5 md:gap-x-3 md:justify-center">
         {loading && <Loader />}
          {error && (
           <div className="text-red-600">

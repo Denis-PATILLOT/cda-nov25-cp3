@@ -23,7 +23,7 @@ export default function ArticleDetails() {
   return (
     <Layout pageTitle={article?.title ? `Dev Blog - ${article.title}`  : "Dev Blog"}>
       <div className="pb-12 mt-12 max-w-[800px] mx-auto">
-        <div className="p-6 bg-gray-800 shadow-lg rounded-2xl text-white">
+        <div className="p-6 bg-gray-700 shadow-lg rounded-2xl text-white">
           {typeof article === "undefined" ? (
             <Loader />
           ) : (
@@ -52,7 +52,7 @@ export default function ArticleDetails() {
               <p className="mt-6 mb-6">{article?.body}</p>
               <div className="flex justify-between mb-6">
                     <button
-                        className="cursor-pointer text-white p-2 rounded-xl bg-red-500 w-[50%] h-fit"
+                        className="cursor-pointer text-white p-2 rounded-xl bg-red-500 w-max[40%] h-fit m-auto"
                         onClick={async () => {
                         if (
                             confirm("Do you want to delete this article ?")
