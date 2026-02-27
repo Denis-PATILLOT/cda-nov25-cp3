@@ -2,11 +2,16 @@ import { useRecentPostsQuery } from "@/graphql/generated/schema";
 import Loader from "./Loader";
 import PostCard from "./PostCard";
 import Link from "next/link";
+import { useEffect } from "react";
 
 
 export default function RecentPosts() {
-  const { data, loading, error } = useRecentPostsQuery({variables: {limit: 5}});
+  const { data, loading, error, refetch } = useRecentPostsQuery({variables: {limit: 5}});
   const posts = data?.articles || [];
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <div className="p-4">

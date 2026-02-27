@@ -1,6 +1,7 @@
 import { useCategoriesQuery, type CreateArticleInput } from "@/graphql/generated/schema";
 import { useCreateArticleMutation } from "@/graphql/generated/schema";
 import { useRouter } from "next/router";
+import { useRecentPostsQuery } from "@/graphql/generated/schema";
 
 
 export default function ArticleForm() {
@@ -8,15 +9,22 @@ export default function ArticleForm() {
   const router = useRouter();
   const [createArticle, { loading, error }] = useCreateArticleMutation();    
   const { data } = useCategoriesQuery()
+  const {refetch} = useRecentPostsQuery();
   const categories = data?.categories || [];
 
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    const form = document.querySelector("form")!;
-    const formData = new FormData(form);
+    const formData = new FormData(e.currentTarget as any);
+    console.log(formData);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+    data.category = {id: Number(data.category)};
+    console.log(data);
+    
     console.log("formulaire soumis");
     try {
-        const response = await createArticle({ variables: { data: data as unknown as CreateArticleInput } });
+        const response = await createArticle({ variables: { data: data as unknown as CreateArticleInput} });
+        await refetch();
         router.push(`/articles/${response.data?.createArticle.id}`);
     } catch (err) {
         console.error(err);
