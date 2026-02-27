@@ -29,7 +29,7 @@ export default function ArticleDetails() {
           ) : (
             <div>
               <div className=" flex justify-between items-start md:items-center">
-                <div className="flex items-start md:items-center flex-col md:flex-row">
+                <div className="flex items-start md:items-center flex-col md:flex-row w-full">
                   <h1 className="text-3xl">{article?.title}</h1>
 
                   <div className="md:ml-4 mt-4 md:mt-0">
@@ -41,8 +41,10 @@ export default function ArticleDetails() {
                         Published on : {new Date(article?.createdAt).toLocaleDateString()} {/* */}
                         <br />
                         Updated on : {new Date(article?.updatedAt).toLocaleDateString()}
-                  </div>
                 </div>
+                  
+                </div>
+                
               </div>
 
               {/** biome-ignore lint/performance/noImgElement: images come from unknow domains */}

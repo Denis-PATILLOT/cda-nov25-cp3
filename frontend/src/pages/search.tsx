@@ -31,15 +31,16 @@ export default function Search() {
       )}
       {posts.length === 0 && !loading && (
         <div className="p-4">
-          <p className="pb-4 pt-12 text-center">
+          <p className="pb-4 pt-12 text-center text-white">
             No article for your actual search
           </p>
 
           <div className="text-center">
             <Link
               href="/"
-              className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+              className="inline-block text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:text-yellow-500"
             >
+              Retour accueil
             </Link>
           </div>
         </div>
